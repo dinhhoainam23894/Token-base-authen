@@ -26,7 +26,7 @@ Vì giao thức HTTP là không trạng thái, điều này có nghĩa là nếu
 
 Cách truyền thống để ứng dụng của chúng ta nhớ chúng ta là ai để lưu trữ người dùng đăng nhập thông tin trên máy chủ. Điều này có thể được thực hiện theo một vài cách khác nhau trong phiên, thường là trong bộ nhớ hoặc được lưu trữ trên đĩa.
 
-Như là web, ứng dụng và sự nổi lên của ứng dụng di động đã xuất hiện, phương pháp xác thực này đã cho thấy các vấn đề, đặc biệt là trong khả năng mở rộng.
+Khi web, ứng dụng và sự nổi lên của ứng dụng di động xuất hiện, phương pháp xác thực này đã cho thấy các vấn đề, đặc biệt là trong khả năng mở rộng.
 
 ## Các vấn đề với xác thực dựa trên máy chủ
 
@@ -34,7 +34,7 @@ Một số vấn đề lớn nảy sinh với phương pháp xác thực này.
 
 Phiên: Mỗi lần người dùng được xác thực, máy chủ sẽ cần phải tạo bản ghi ở đâu đó trên máy chủ của chúng ta. Điều này thường được thực hiện trong bộ nhớ và khi có nhiều người dùng xác thực, chi phí trên máy chủ của bạn tăng lên.
 
-Khả năng mở rộng: Vì các phiên được lưu trữ trong bộ nhớ, điều này cung cấp các vấn đề với khả năng mở rộng. Khi các nhà cung cấp dịch vụ đám mây của chúng ta bắt đầu sao chép các máy chủ để xử lý tải ứng dụng, có thông tin quan trọng trong bộ nhớ phiên sẽ hạn chế khả năng mở rộng của chúng ta
+Khả năng mở rộng: Vì các phiên được lưu trữ trong bộ nhớ, điều này tạo ra các vấn đề với khả năng mở rộng. Khi các nhà cung cấp dịch vụ đám mây của chúng ta bắt đầu sao chép các máy chủ để xử lý tải ứng dụng, có thông tin quan trọng trong bộ nhớ phiên sẽ hạn chế khả năng mở rộng của chúng ta
 
 CORS: Vì chúng ta muốn mở rộng ứng dụng của mình để cho phép dữ liệu của chúng ta được sử dụng trên nhiều thiết bị di động, chúng ta lo lắng về việc chia sẻ tài nguyên gốc (CORS). Khi sử dụng các lệnh gọi AJAX để lấy các tài nguyên từ một miền khác (điện thoại di động đến máy chủ API của chúng ta), chúng ta có thể gặp sự cố với các yêu cầu bị cấm.
 
@@ -56,7 +56,7 @@ Truy cập yêu cầu người dùng với Tên người dùng / Mật khẩu
 Khách hàng lưu trữ token và gửi cùng với mọi yêu cầu
 Máy chủ xác minh token và phản hồi dữ liệu
 
-Mỗi yêu cầu sẽ yêu cầu  token.token này sẽ được gửi trong headers HTTP để chúng ta tiếp tục với các ý tưởng về các yêu cầu HTTP không trạng thái. Chúng ta cũng sẽ cần phải đặt máy chủ của mình chấp nhận yêu cầu từ tất cả các miền sử dụng
+Mỗi yêu cầu sẽ yêu cầu token. token này sẽ được gửi trong headers HTTP để chúng ta tiếp tục với các ý tưởng về các yêu cầu HTTP không trạng thái. Chúng ta cũng sẽ cần phải đặt máy chủ của mình chấp nhận yêu cầu từ tất cả các miền sử dụng
 
 Access-Control-Allow-Origin: *. Điều thú vị về việc chỉ định * trong tiêu đề ACAO là nó không cho phép yêu cầu cung cấp thông tin xác thực như xác thực HTTP, chứng chỉ SSL phía máy khách hoặc cookie.
 
@@ -74,7 +74,7 @@ Nếu chúng ta giữ thông tin phiên về người dùng đã đăng nhập, 
 
 Điều này mang lại vấn đề kể từ khi một số người dùng sẽ bị buộc phải cùng một máy chủ và điều này có thể mang lại một điểm lưu lượng truy cập lớn.
 
-Đừng lo lắng! Những vấn đề này se biến mất với token vì bản thân token giữ dữ liệu cho người dùng đó.
+Đừng lo lắng! Những vấn đề này sẽ biến mất với token vì bản thân token giữ dữ liệu cho người dùng đó.
 
 ## Bảo mật
 
@@ -100,7 +100,7 @@ Khi tạo token, bạn có một vài tùy chọn. Chúng ta sẽ đi sâu hơn 
 Biểu đồ thư viện và trình gỡ lỗi tiện dụng này hiển thị hỗ trợ cho các thẻ JSON Web. Bạn có thể thấy rằng nó có một số lượng lớn hỗ trợ trên nhiều ngôn ngữ. Điều này có nghĩa là bạn có thể thực sự chuyển đổi cơ chế xác thực của mình nếu bạn chọn làm như vậy trong tương lai!
 
 ## kết luận
-Đây chỉ là cái nhìn tổng quát cách thức và lý do xác thực dựa trên token. Như trong thế giới an ninh hiện tại, có nhiều, rất nhiều, cực kỳ nhiều, nhiều lắm (quá nhiều?) Nhiều hơn cho mỗi chủ đề và nó thay đổi theo từng trường hợp sử dụng. Thậm chí, chúng ta còn nghiên cứu một số chủ đề về khả năng mở rộng cũng xứng đáng với cuộc trò chuyện của riêng họ.
+Đây chỉ là cái nhìn tổng quát cách thức và lý do xác thực dựa trên token. Như trong thế giới bảo mật hiện tại, có nhiều, rất nhiều, cực kỳ nhiều, nhiều lắm (quá nhiều?) Nhiều hơn cho mỗi chủ đề và nó thay đổi theo từng trường hợp sử dụng. Thậm chí, chúng ta còn nghiên cứu một số chủ đề về khả năng mở rộng cũng xứng đáng với cuộc trò chuyện của riêng họ.
 
 Đây là mô hình tổng quan nâng cao ,  vì vậy xin vui lòng chỉ ra bất cứ điều gì đã bị bỏ lỡ hoặc bất kỳ câu hỏi nào bạn có về vấn đề này.
 
